@@ -1,0 +1,56 @@
+Initialize engine version: 5.6.0f3 (497a0f351392)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 (ID=0x1b81)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   22.21.13.8541
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.017 seconds
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Desktop\Gat316\Gat_316_Base_Project_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3286x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.860637 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 1be4 -> priority: 1 
+  Thread -> id: 2704 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 8.154572 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 399.
+Total: 0.413222 ms (FindLiveObjects: 0.044127 ms CreateObjectMapping: 0.041789 ms MarkObjects: 0.296620 ms  DeleteObjects: 0.030100 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.429037 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 5065.
+Total: 1.637694 ms (FindLiveObjects: 0.225022 ms CreateObjectMapping: 0.059616 ms MarkObjects: 1.339320 ms  DeleteObjects: 0.013442 ms)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
