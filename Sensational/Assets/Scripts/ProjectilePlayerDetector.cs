@@ -50,7 +50,7 @@ public class ProjectilePlayerDetector : MonoBehaviour
 
         if (Vector3.Distance(transform.position, Player.transform.position) <= 1.0 && waitTillActive == false)
         {
-            GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfProjectilesThatTouchedMe();
+           // GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfProjectilesThatTouchedMe();
 
             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
             DamageFlashOnCanvas.EnableScreen();

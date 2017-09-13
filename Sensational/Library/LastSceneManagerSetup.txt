@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ColorChangerAdded.unity
+- path: Assets/Scenes/Gat_316_Template.unity
   isLoaded: 1
   isActive: 1

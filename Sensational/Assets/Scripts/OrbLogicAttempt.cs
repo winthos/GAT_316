@@ -114,7 +114,7 @@ public class OrbLogicAttempt : MonoBehaviour
             //time to reset
             if(ResetTimer >= HowLongUntilReset)
             {
-                if (ImInRoom2 == true)
+                /*if (ImInRoom2 == true)
                 {
                     GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfSwitchResetsInRoom2();
                     //gameObject.GetComponent<DataNStuff>().UpdateNumberOfSwitchResetsInRoom2();
@@ -149,6 +149,7 @@ public class OrbLogicAttempt : MonoBehaviour
                     GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfSwitchResetsInRoom7();
                     // gameObject.GetComponent<DataNStuff>().UpdateNumberOfSwitchResetsInRoom7();
                 }
+                */
 
                 GameObject StandPower = (GameObject)Instantiate(PrefabToSpawn, transform.position, transform.rotation);
 

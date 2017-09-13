@@ -70,12 +70,12 @@ public class ProjectileTimeStopLogic : MonoBehaviour
 
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true && AmIOnCube == false)
         {
-            gameObject.transform.FindChild("warp1").GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.FindChild("warp2").GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.FindChild("warp3").GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.FindChild("warp4").GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.FindChild("warp5").GetComponent<MeshRenderer>().enabled = true;
-            gameObject.transform.FindChild("warp6").GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.Find("warp1").GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.Find("warp2").GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.Find("warp3").GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.Find("warp4").GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.Find("warp5").GetComponent<MeshRenderer>().enabled = true;
+            gameObject.transform.Find("warp6").GetComponent<MeshRenderer>().enabled = true;
             timeNotStoppedYet = true;
             normaltimeLerpdone = false;
             if(lerpToStopCounter >= slowdownSpeed)
@@ -100,12 +100,12 @@ public class ProjectileTimeStopLogic : MonoBehaviour
 
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false && AmIOnCube == false)
         {
-            gameObject.transform.FindChild("warp1").GetComponent<MeshRenderer>().enabled = false;
-            gameObject.transform.FindChild("warp2").GetComponent<MeshRenderer>().enabled = false;
-            gameObject.transform.FindChild("warp3").GetComponent<MeshRenderer>().enabled = false;
-            gameObject.transform.FindChild("warp4").GetComponent<MeshRenderer>().enabled = false;
-            gameObject.transform.FindChild("warp5").GetComponent<MeshRenderer>().enabled = false;
-            gameObject.transform.FindChild("warp6").GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.Find("warp1").GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.Find("warp2").GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.Find("warp3").GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.Find("warp4").GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.Find("warp5").GetComponent<MeshRenderer>().enabled = false;
+            gameObject.transform.Find("warp6").GetComponent<MeshRenderer>().enabled = false;
 
             if (timeNotStoppedYet == false)
             {
