@@ -54,6 +54,7 @@ public class StandActivator : MonoBehaviour
             AudioSource audio = GetComponent<AudioSource>();
             audio.Play();
 
+            /*
             if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom1 == true)
             {
                 ShotsFiredInRoom1 += 1;
@@ -95,7 +96,9 @@ public class StandActivator : MonoBehaviour
                 ShotsFiredInRoom7 += 1;
                 GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom7(ShotsFiredInRoom7);
             }
+            */
         }
+        
 
     }
 }
