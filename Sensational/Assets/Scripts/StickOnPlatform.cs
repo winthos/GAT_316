@@ -18,12 +18,13 @@ public class StickOnPlatform : MonoBehaviour
 		
 	}
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "StandIgnore")
         {
             print("parent trap");
-            other.gameObject.transform.SetParent(PlatformEmpty.transform,true);
+            other.gameObject.transform.SetParent(PlatformEmpty.transform, true);
+            //other.gameObject.transform.parent = PlatformEmpty.transform;
         }
     }
 
