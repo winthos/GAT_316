@@ -68,6 +68,7 @@ public class ProjectileTimeStopLogic : MonoBehaviour
             }
         }
 
+        //time is stopped
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true && AmIOnCube == false)
         {
             gameObject.transform.Find("warp1").GetComponent<MeshRenderer>().enabled = true;
@@ -98,6 +99,7 @@ public class ProjectileTimeStopLogic : MonoBehaviour
            // return;
         }
 
+        //time resumes....
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false && AmIOnCube == false)
         {
             gameObject.transform.Find("warp1").GetComponent<MeshRenderer>().enabled = false;

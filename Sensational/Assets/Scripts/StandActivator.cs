@@ -49,7 +49,7 @@ public class StandActivator : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && ReadyToActivate == true)
         {
             ReadyToActivate = false;
-            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
+            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), 1f), transform.rotation);
             StandPower.GetComponent<Rigidbody>().velocity = transform.forward * speed;
             AudioSource audio = GetComponent<AudioSource>();
             audio.Play();

@@ -179,7 +179,7 @@ public class OrbLogicAttempt : MonoBehaviour
                 if (gameObject.transform.position == Positions[1].transform.position)
                 {
                     gameObject.GetComponent<Renderer>().material = solid;
-                    gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale * 2;
+                    gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale * 3;
                     active = true;
                    // counter = 0;
                 }
@@ -196,7 +196,7 @@ public class OrbLogicAttempt : MonoBehaviour
                 if (gameObject.transform.position == Positions[2].transform.position)
                 {
                     gameObject.GetComponent<Renderer>().material = solid;
-                    gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale * 2;
+                    gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale * 3;
                     active = true;
                     // counter = 0;
                 }
@@ -212,7 +212,7 @@ public class OrbLogicAttempt : MonoBehaviour
                 if (gameObject.transform.position == Positions[3].transform.position)
                 {
                     gameObject.GetComponent<Renderer>().material = solid;
-                    gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale * 2;
+                    gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale * 3;
                     active = false;
                     startReset = false;
                     TimerText.GetComponent<TextMesh>().text = "UNLOCKED!";
@@ -234,7 +234,7 @@ public class OrbLogicAttempt : MonoBehaviour
             HowManyTimesHaveIBeenPunched++;
             print(HowManyTimesHaveIBeenPunched);
             gameObject.GetComponent<Renderer>().material = clear;
-            gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale / 2;
+            gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale / 3;
             active = false;
             startReset = true;
             counter = 0;
