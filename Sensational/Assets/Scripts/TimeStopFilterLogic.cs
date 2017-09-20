@@ -5,7 +5,7 @@ public class TimeStopFilterLogic : MonoBehaviour
 {
     //throw this script on the filter
     private bool TimeState;
-
+    private bool OnagiTimeState;
     public float scale = 0.5f;
     public float minScale = 0.13f;
     public float maxScale = 30f;
@@ -15,7 +15,7 @@ public class TimeStopFilterLogic : MonoBehaviour
     void Start () 
 	{
         TimeState = GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeStopped;
-        
+        OnagiTimeState = GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().OnagiTimeStopped;
     }
 	
 	// Update is called once per frame

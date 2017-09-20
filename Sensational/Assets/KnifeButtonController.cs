@@ -17,6 +17,8 @@ public class KnifeButtonController : MonoBehaviour
     public float BiggerReset = 5.0f;
     public float BiggerResetCounter = 0f;
 
+    public GameObject ShortResetBar;
+    public GameObject LongResetBar;
 
     //public bool ColorDoThisOnce = false;
     //
@@ -33,16 +35,12 @@ public class KnifeButtonController : MonoBehaviour
     {
         if (Solved == true)
         {
-            print("feedback that it is solved");
+            //print("feedback that it is solved");
 
             
         }
 
-        /*if (Solved == false && ColorDoThisOnce == false)
-        {
-            ColorDoThisOnce = true;
-            gameObject.GetComponent<Renderer>().material = Colors[0];
-        }*/
+    ////////////////PUZZLE SOLVED STUFF////////
 
         if (NumberOfKnivesThatHitMeSoFar >= Pips.Length)
         {
@@ -54,9 +52,15 @@ public class KnifeButtonController : MonoBehaviour
 
             if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false)
             {
+                //this is the reset for the whole thing after we have solved the puzzle
                 BiggerResetCounter += Time.deltaTime;
+                Vector3 newVec = new Vector3(LongResetBar.transform.localScale.x, LongResetBar.transform.localScale.y, (BiggerReset - BiggerResetCounter) / BiggerReset);
+                LongResetBar.transform.localScale = newVec;
+
                 if (BiggerResetCounter >= BiggerReset)
                 {
+                    LongResetBar.transform.localScale = new Vector3(LongResetBar.transform.localScale.x, LongResetBar.transform.localScale.y, 1);
+                    ShortResetBar.transform.localScale = new Vector3(ShortResetBar.transform.localScale.x, ShortResetBar.transform.localScale.y, 1);
                     ShouldIBeCountingDown = false;
                     NumberOfKnivesThatHitMeSoFar = 0;
                     Counter = TimeBeforeReset;
@@ -74,18 +78,27 @@ public class KnifeButtonController : MonoBehaviour
 
             return;
         }
+
+    //////////////////////////////////////
             
+
+        //////////short reset before solved here////////////
         if(ShouldIBeCountingDown == true)
         {
             if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false)
             {
                 Counter -= Time.deltaTime;
+
+                //short bar reset
+                Vector3 newVec = new Vector3(ShortResetBar.transform.localScale.x, ShortResetBar.transform.localScale.y, Counter / TimeBeforeReset);
+                ShortResetBar.transform.localScale = newVec;
             }
 
 
             //ok it's time to reset everything
             if(Counter <= 0)
             {
+                ShortResetBar.transform.localScale = new Vector3(ShortResetBar.transform.localScale.x, ShortResetBar.transform.localScale.y, 1);
                 ShouldIBeCountingDown = false;
                 NumberOfKnivesThatHitMeSoFar = 0;
                 Counter = TimeBeforeReset;
@@ -97,6 +110,8 @@ public class KnifeButtonController : MonoBehaviour
                 }
             }
         }
+        ////////////////////////////////////////////////
+        
         //time is normal
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false)
         {

@@ -51,6 +51,7 @@ public class OrbLogicAttempt : MonoBehaviour
 
     private bool IncrementOrbLogicNow = false;
 
+    public GameObject OrbBar; //scale the X out of 1 to make the progress bar
     // Use this for initialization
     void Start () 
 	{
@@ -106,6 +107,8 @@ public class OrbLogicAttempt : MonoBehaviour
 
             ResetTimer += Time.deltaTime;
             TimerText.GetComponent<TextMesh>().text = (HowLongUntilReset - ResetTimer).ToString("F2");
+            //print()
+            OrbBar.transform.localScale = new Vector3((HowLongUntilReset - ResetTimer) / HowLongUntilReset,OrbBar.transform.localScale.y, OrbBar.transform.localScale.z);
             //print(ResetTimer);
 
             //print(gameObject.transform.localScale);
@@ -114,6 +117,8 @@ public class OrbLogicAttempt : MonoBehaviour
             //time to reset
             if(ResetTimer >= HowLongUntilReset)
             {
+
+                OrbBar.transform.localScale = new Vector3(1, OrbBar.transform.localScale.y, OrbBar.transform.localScale.z);
                 /*if (ImInRoom2 == true)
                 {
                     GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfSwitchResetsInRoom2();

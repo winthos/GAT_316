@@ -15,6 +15,8 @@ public class KnivesInHandController : MonoBehaviour
 
     private bool dothisonce = false;
 
+    public GameObject[] KnifeHandles;
+    public GameObject[] KnifeBlades;
     void Start()
     {
         TimeGlobal = GameObject.Find("LevelGlobals");
@@ -47,18 +49,17 @@ public class KnivesInHandController : MonoBehaviour
                     transform.position = Vector3.MoveTowards(transform.position, endMarker.position, speed * Time.deltaTime);
                 }
 
-
             }
-
-
         }
 
-        //when the reload counter is
-        /*if (StandActivator.GetComponent<StandActivator>().KniveReloadCounter >= StandActivator.GetComponent<StandActivator>().HowMuchLongerTillIHaveMoreKnives)
+        if (TimeGlobal.GetComponent<LevelGlobals>().OnagiTimeStopped == true)
         {
-            transform.position = startMarker.position;
-        }*/
-
+            for(int i = 0; i < KnifeHandles.Length; i++)
+            {
+                KnifeHandles[i].GetComponent<ColorChanger>().enabled = true;
+                KnifeBlades[i].GetComponent<ColorChanger>().enabled = true;
+            }
+        }
     }
 
     public void Reset()

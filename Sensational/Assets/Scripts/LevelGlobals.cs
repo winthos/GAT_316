@@ -30,6 +30,8 @@ public class LevelGlobals : MonoBehaviour
     public Texture NormalGreyscale;
     public Texture ColorGreyscale;
 
+    public bool OnagiTimeStopped = false;
+
     private float greyscalecounter = 0f;
 	// Use this for initialization
 	void Start () 

@@ -88,6 +88,8 @@
     <Compile Include="Assets\KnifeParticleSoundController.cs" />
     <Compile Include="Assets\KnifeParticleTimeLogic.cs" />
     <Compile Include="Assets\KnivesInHandController.cs" />
+    <Compile Include="Assets\OnagiSphereController.cs" />
+    <Compile Include="Assets\OnagiTypeController.cs" />
     <Compile Include="Assets\Scripts\AlwaysLookAt.cs" />
     <Compile Include="Assets\Scripts\AnotherBackAndForth.cs" />
     <Compile Include="Assets\Scripts\AppearWithDistance.cs" />

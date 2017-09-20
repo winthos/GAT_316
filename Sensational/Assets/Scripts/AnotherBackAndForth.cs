@@ -62,7 +62,7 @@ public class AnotherBackAndForth : MonoBehaviour
                 newspeed = 0;
                 if(ImADangerCubeChangeThis == true)
                 {
-                    newspeed = speed / GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeSlowScale;
+                    //newspeed = speed / GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeSlowScale;
                 }
                 counter = 0f;
                 return;
