@@ -21,6 +21,7 @@ public class StandActivator : MonoBehaviour
     private int ShotsFiredInRoom6 = 0;
     private int ShotsFiredInRoom7 = 0;
 
+    public GameObject KnifeSpawnPoint = null;
 
     public float speed = 10f;
     // Use this for initialization
@@ -49,10 +50,15 @@ public class StandActivator : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && ReadyToActivate == true)
         {
             ReadyToActivate = false;
-            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1.5f, 1.5f), 1f), transform.rotation);
+            Vector3 SpawnPos = KnifeSpawnPoint.GetComponent<Transform>().position;
+            //SpawnPos.z += 1.5f;
+            SpawnPos.x += Random.Range(-0.5f, 0.5f);
+            SpawnPos.y += Random.Range(-0.5f, 0.5f);
+
+            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, SpawnPos, transform.rotation);
             StandPower.GetComponent<Rigidbody>().velocity = transform.forward * speed;
-            AudioSource audio = GetComponent<AudioSource>();
-            audio.Play();
+            //AudioSource audio = GetComponent<AudioSource>();
+            //audio.Play();
 
             /*
             if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom1 == true)

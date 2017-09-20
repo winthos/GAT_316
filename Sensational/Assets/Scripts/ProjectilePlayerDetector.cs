@@ -39,7 +39,7 @@ public class ProjectilePlayerDetector : MonoBehaviour
         // transform.position = TargetProjectileToTrack.transform.position;
         if (Vector3.Distance(transform.position, Player.transform.position) <= 2.5 && waitTillActive == false && AmIOnCube == true)
         {
-            GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfBlocksThatTouchedMe();
+            //GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfBlocksThatTouchedMe();
             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
             DamageFlashOnCanvas.EnableScreen();
             waitTillActive = true;

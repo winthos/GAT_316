@@ -9,6 +9,11 @@ public class ColorChanger : MonoBehaviour
     private Color OriginalColor;
     private Color GreyScaleColor;
     private Color InvertedColor;
+    public bool AmIAKnife = false;
+
+    private float KnifeCounter = 0.0f;
+    private float HowLongBeforeColorChange = 0.05f;
+
     // Use this for initialization
     void Start()
     {
@@ -24,7 +29,22 @@ public class ColorChanger : MonoBehaviour
     {
         if (LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == true && CheckThisIfIShouldBeColoredInStoppedTime == false)
         {
-            gameObject.GetComponent<Renderer>().material.color = InvertedColor;
+            if(AmIAKnife == true)
+            {
+                KnifeCounter += Time.deltaTime;
+                if(KnifeCounter>=HowLongBeforeColorChange)
+                {
+                    gameObject.GetComponent<Renderer>().material.color = InvertedColor;
+                    KnifeCounter = 0f;
+                    return;
+                }
+            }
+
+            else
+            {
+                gameObject.GetComponent<Renderer>().material.color = InvertedColor;
+            }
+
         }
 
         else

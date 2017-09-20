@@ -2,27 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowingKnifeBehavior : MonoBehaviour 
+public class ThrowingKnifeBehavior : MonoBehaviour
 {
     private GameObject TimeGlobal;
     private Rigidbody MyBody;
     private Vector3 OldVelocity;
-    public float ForwardSpeed = 10;
+    //public float ForwardSpeed = 10;
     public Vector3 ForwardDirection;
     public GameObject PreFabToMake;
-    private float DespawnTimer = 0.7f;
+    private float DespawnTimer = 10f;
     private float lerpToStopCounter = 0f;
-    private float slowdownSpeed = 0.3f;
+    private float slowdownSpeed = 0.05f;
     private bool stoptimeLerpdone = false;
     private bool normaltimeLerpdone = false;
 
     private bool timeNotStoppedYet = false;
+
+    private AudioSource audiosource;
+    public AudioClip[] Whooshes;
+    private AudioClip WhooshPlay;
+
     // Use this for initialization
     void Start()
     {
+        audiosource = gameObject.GetComponent<AudioSource>();
+
         TimeGlobal = GameObject.Find("LevelGlobals");
         MyBody = GetComponent<Rigidbody>();
         OldVelocity = MyBody.velocity;
+
+        int index = Random.Range(0, Whooshes.Length);
+        WhooshPlay = Whooshes[index];
+        audiosource.clip = WhooshPlay;
+        audiosource.Play();
+
         // StandBody = GetComponent<Rigidbody>();
     }
 
@@ -33,18 +46,23 @@ public class ThrowingKnifeBehavior : MonoBehaviour
         //if time is stopped do these
         if(TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true)
         {
+            
+            timeNotStoppedYet = true;
+            normaltimeLerpdone = false;
             if (lerpToStopCounter >= slowdownSpeed)
             {
+                
                 stoptimeLerpdone = true;
-                MyBody.velocity = OldVelocity / TimeGlobal.GetComponent<LevelGlobals>().TimeSlowScale;
+                MyBody.velocity = Vector3.zero;//OldVelocity / TimeGlobal.GetComponent<LevelGlobals>().TimeSlowScale;
                 lerpToStopCounter = 0f;
+                GetComponent<Rigidbody>().isKinematic = true;
                 return;
             }
 
             if (stoptimeLerpdone == false)
             {
                 //counter that is incremented with time / how long it takes to get to zero
-                MyBody.velocity = Vector3.Lerp(OldVelocity, Vector3.zero, lerpToStopCounter / slowdownSpeed);
+                //MyBody.velocity = Vector3.Lerp(OldVelocity, Vector3.zero, lerpToStopCounter / slowdownSpeed);
                 lerpToStopCounter += Time.deltaTime;
             }
         }
@@ -52,16 +70,24 @@ public class ThrowingKnifeBehavior : MonoBehaviour
         //if time resumes do these
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false)
         {
-            //hey it's time to go away.....
+            //despawn ones that have gone out of bounds by accident oops
             DespawnTimer -= Time.deltaTime;
-            if (DespawnTimer <= 0)
+            if (DespawnTimer <= 0.0f)
             {
-                //spawn in the hitspark particle here
-                AudioSource audio = GameObject.Find("StandInSound").GetComponent<AudioSource>();
-                audio.Play();
-                GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
+
+            GetComponent<Rigidbody>().isKinematic = false;
+            //hey it's time to go away.....
+            //DespawnTimer -= Time.deltaTime;
+            //if (DespawnTimer <= 0)
+            // {
+            //spawn in the hitspark particle here
+            //    AudioSource audio = GameObject.Find("StandInSound").GetComponent<AudioSource>();
+            //    audio.Play();
+            //    GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
+            //     Destroy(gameObject);
+            // }
 
             if (timeNotStoppedYet == false)
             {
@@ -90,21 +116,49 @@ public class ThrowingKnifeBehavior : MonoBehaviour
         }
     }
 
+
+
     void OnCollisionEnter(Collision col)
     {
-        //print("collision is happening");
-        if (col.gameObject.tag == "StandTouch")
+        if (col.gameObject.tag == "DoYouUnderstand" || col.gameObject.tag == "StandIgnore")
         {
-            //spawn explosion particle here?
-            AudioSource audio = GameObject.Find("StandInSound").GetComponent<AudioSource>();
-            audio.Play();
-            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
+           // print("a knife touched another knife");
+            Physics.IgnoreCollision(col.collider, GetComponent<Collider>());
 
-            if (col.gameObject.name == "Projectile")
+            /*if (col.gameObject.tag == "StandIgnore")
             {
-                //Destroy(col.gameObject);
-            }
+                print("knife touched the player");
+                Physics.IgnoreCollision(col.collider, GetComponent<Collider>());
+                return;
+
+            }*/
+
+            return;
+        }
+
+        else
+        {
+            //print(col.collider);
+            //AudioSource soundeffect = GameObject.Find("StandInSound").GetComponent<AudioSource>();
+            //soundeffect.Play();
+            GameObject Hitspark = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+
+        //print("collision is happening");
+        /* if (col.gameObject.tag == "StandTouch")
+         {
+             //spawn explosion particle here?
+             AudioSource audio = GameObject.Find("StandInSound").GetComponent<AudioSource>();
+             audio.Play();
+             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
+
+             if (col.gameObject.name == "Projectile")
+             {
+                 //Destroy(col.gameObject);
+             }
+             Destroy(gameObject);
+         }
+         */
     }
 }

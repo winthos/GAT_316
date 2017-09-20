@@ -28,6 +28,8 @@ public class ProjectileTimeStopLogic : MonoBehaviour
     public GameObject LargeAfterImage;
     public GameObject SmallAfterImage;
 
+    private DamageFlashController DamageFlashOnCanvas;
+
     private float delay = 0f;
     //private DamageFlashController DamageFlashOnCanvas;
 
@@ -47,12 +49,13 @@ public class ProjectileTimeStopLogic : MonoBehaviour
         {
             Small = true;
         }
+        DamageFlashOnCanvas = GameObject.Find("Canvas/DamageFlash").GetComponent<DamageFlashController>();
     }
 	
 	// Update is called once per frame
 	void Update () 
 	{
-        delay += Time.deltaTime;
+        /*delay += Time.deltaTime;
         if(TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true && delay > 0.5f)
         {
             if(Large == true)
@@ -66,7 +69,7 @@ public class ProjectileTimeStopLogic : MonoBehaviour
               //  Instantiate(SmallAfterImage, gameObject.transform.position, Quaternion.identity);
                 delay = 0f;
             }
-        }
+        }*/
 
         //time is stopped
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true && AmIOnCube == false)
@@ -77,12 +80,13 @@ public class ProjectileTimeStopLogic : MonoBehaviour
             gameObject.transform.Find("warp4").GetComponent<MeshRenderer>().enabled = true;
             gameObject.transform.Find("warp5").GetComponent<MeshRenderer>().enabled = true;
             gameObject.transform.Find("warp6").GetComponent<MeshRenderer>().enabled = true;
+
             timeNotStoppedYet = true;
             normaltimeLerpdone = false;
             if(lerpToStopCounter >= slowdownSpeed)
             {
                 stoptimeLerpdone = true;
-                MyBody.velocity = OldVelocity / TimeGlobal.GetComponent<LevelGlobals>().TimeSlowScale;
+                MyBody.velocity = Vector3.zero;//OldVelocity / TimeGlobal.GetComponent<LevelGlobals>().TimeSlowScale;
                 lerpToStopCounter = 0f;
                 return;
             }
@@ -90,7 +94,7 @@ public class ProjectileTimeStopLogic : MonoBehaviour
             if(stoptimeLerpdone == false)
             {
                 //counter that is incremented with time / how long it takes to get to zero
-               MyBody.velocity = Vector3.Lerp(OldVelocity, Vector3.zero, lerpToStopCounter / slowdownSpeed);
+                MyBody.velocity = Vector3.zero;// Vector3.Lerp(OldVelocity, Vector3.zero, slowdownSpeed);
                lerpToStopCounter += Time.deltaTime;
             }
 
@@ -146,18 +150,36 @@ public class ProjectileTimeStopLogic : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        //print(col.gameObject.tag);
-        if (col.gameObject.tag == "DoYouUnderstand")
+        if (col.gameObject.tag == "StandIgnore")
         {
+            print("touched the player");
+            DamageFlashOnCanvas.EnableScreen();
             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
 
             if (AmIOnCube == false)
             {
                 Destroy(gameObject);
-                TimeGlobal.GetComponent<LevelGlobals>().DestroyedOrbsCount++;
+                //TimeGlobal.GetComponent<LevelGlobals>().DestroyedOrbsCount++;
             }
 
         }
+
+        //print(col.gameObject.tag);
+        if (col.gameObject.tag == "DoYouUnderstand")
+        {
+            print("touched a knife");
+            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
+
+            if (AmIOnCube == false)
+            {
+                Destroy(gameObject);
+                //TimeGlobal.GetComponent<LevelGlobals>().DestroyedOrbsCount++;
+            }
+        }
+
+
+
+
 
     }
 }

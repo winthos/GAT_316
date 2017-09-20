@@ -4,7 +4,8 @@ using System.Collections;
 public class BackgroundMusicLogic : MonoBehaviour 
 {
     private bool IsTimeStopped;
-
+    public float NewPitch = 1.37f;
+    public float NewVolume = 0.4f;
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,7 +25,8 @@ public class BackgroundMusicLogic : MonoBehaviour
             zone.enabled = true;
 
             AudioSource source = GetComponent<AudioSource>();
-            source.volume = 0.2f;
+            source.volume = NewVolume;
+            source.pitch = NewPitch;
 
         }
 
@@ -38,6 +40,7 @@ public class BackgroundMusicLogic : MonoBehaviour
 
             AudioSource source = GetComponent<AudioSource>();
             source.volume = 1.0f;
+            source.pitch = 1.0f;
         }
 
 	}

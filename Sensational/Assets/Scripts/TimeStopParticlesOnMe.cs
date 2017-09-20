@@ -22,6 +22,8 @@ public class TimeStopParticlesOnMe : MonoBehaviour
 	{
         TimeState = GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeStopped;
        // print(TimeState);
+        
+        //IF TIME IS STOPPED
         if (TimeState == false && dothisonce == false)
         {
             
@@ -29,6 +31,7 @@ public class TimeStopParticlesOnMe : MonoBehaviour
             dothisonce = true;
         }
 
+        //SOSHITE TOKI GA UGOKI DESU
         if (TimeState == true && dothisonce == true)
         {
             //return;
