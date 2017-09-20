@@ -13,6 +13,8 @@ public class DamageFlashController : MonoBehaviour
     private GameObject TimeGlobal;
     private GameObject WhereIsThePlayerOhMyGod;
 
+    public GameObject CrossedOut = null;
+
     // Use this for initialization
     void Start () 
 	{
@@ -46,6 +48,7 @@ public class DamageFlashController : MonoBehaviour
         TimeGlobal.GetComponent<LevelGlobals>().IncreaseCount();
         TimeGlobal.GetComponent<LevelGlobals>().StartTheCooldown = true;
         WhereIsThePlayerOhMyGod.GetComponent<MotionBlur>().enabled = true;
+        CrossedOut.GetComponent<Image>().enabled = true;
 
     }
 
@@ -53,5 +56,6 @@ public class DamageFlashController : MonoBehaviour
     {
         damageflash.enabled = false;
         WhereIsThePlayerOhMyGod.GetComponent<MotionBlur>().enabled = false;
+        CrossedOut.GetComponent<Image>().enabled = false;
     }
 }

@@ -84,8 +84,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\KnifeButtonController.cs" />
     <Compile Include="Assets\KnifeParticleSoundController.cs" />
     <Compile Include="Assets\KnifeParticleTimeLogic.cs" />
+    <Compile Include="Assets\KnivesInHandController.cs" />
     <Compile Include="Assets\Scripts\AlwaysLookAt.cs" />
     <Compile Include="Assets\Scripts\AnotherBackAndForth.cs" />
     <Compile Include="Assets\Scripts\AppearWithDistance.cs" />
@@ -140,6 +142,8 @@
     <Compile Include="Assets\Scripts\TimeStopParticlesOnMe.cs" />
     <Compile Include="Assets\Scripts\TimeStopSoundLogic.cs" />
     <Compile Include="Assets\Scripts\WaitThenDestroy.cs" />
+    <Compile Include="Assets\SolidConnectorLogic.cs" />
+    <Compile Include="Assets\TimeStopInUseImageLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\NewUnlitShader.shader" />

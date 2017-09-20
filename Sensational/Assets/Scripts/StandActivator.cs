@@ -4,36 +4,94 @@ using UnityEngine.UI;
 
 public class StandActivator : MonoBehaviour
 {
+    private GameObject TimeGlobal;
     //spawn the stand
     public GameObject PreFabToMake;
-    public float Cooldown = 5f;
+    public float Cooldown = 2f;
+    public float TimeStopCooldown = 0.2f;
     private float CoolDownTimer;
 
     public bool ReadyToActivate = true;
 
     public GameObject CooldownCursor;
 
-    private int ShotsFiredInRoom1 = 0;
-    private int ShotsFiredInRoom2 = 0;
-    private int ShotsFiredInRoom3 = 0;
-    private int ShotsFiredInRoom4 = 0;
-    private int ShotsFiredInRoom5 = 0;
-    private int ShotsFiredInRoom6 = 0;
-    private int ShotsFiredInRoom7 = 0;
+    public GameObject KnifeCooldownBar;
 
     public GameObject KnifeSpawnPoint = null;
 
     public float speed = 10f;
+
+    public int NumberOfKnivesLeft = 10;
+
+    private bool dothisonce = false;
+
+    public float HowMuchLongerTillIHaveMoreKnives = 2.0f;
+    public float KniveReloadCounter = 0.0f;
+
+    public GameObject[] KnifeUIStuff;
+
+    public GameObject[] KnifeModels;
+
+    public AudioClip ReloadClip;
+
+    public GameObject KnivesInHand;
+
     // Use this for initialization
     void Start()
     {
         CoolDownTimer = Cooldown;
-
+        TimeGlobal = GameObject.Find("LevelGlobals");
     }
 
     // Update is called once per frame
     void Update()
     {
+        for(int index = 0; index < 10 - NumberOfKnivesLeft; index++)
+        {
+            KnifeUIStuff[index].GetComponent<Image>().enabled = false;
+            KnifeModels[index].SetActive(false);
+        }
+        
+        if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true)
+        {
+            dothisonce = false;
+            CoolDownTimer = -1;
+        }
+
+        //do this once every time you go back to normal time
+        if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == false)
+        {
+            if (dothisonce == false)
+            {
+                CoolDownTimer = Cooldown;
+                dothisonce = true;
+            }
+
+            //if we are in normal time and we are out of knives, begin knife reload timer
+
+            if(NumberOfKnivesLeft <= 0)
+            {
+                KniveReloadCounter += Time.deltaTime;
+                
+                KnifeCooldownBar.GetComponent<Image>().fillAmount =  KniveReloadCounter / HowMuchLongerTillIHaveMoreKnives;
+                if (KniveReloadCounter >= HowMuchLongerTillIHaveMoreKnives)
+                {
+                    //here we reload our knives n stuff
+                    NumberOfKnivesLeft = 10;
+                    KniveReloadCounter = 0f; //reset the counter oops
+                    KnifeCooldownBar.GetComponent<Image>().fillAmount = 0;
+                    KnivesInHand.GetComponent<KnivesInHandController>().Reset();
+                    GetComponent<AudioSource>().PlayOneShot(ReloadClip);
+                    for (int index = 0; index < NumberOfKnivesLeft; index++)
+                    {
+                        KnifeUIStuff[index].GetComponent<Image>().enabled = true;
+                        KnifeModels[index].SetActive(true);
+                    }
+                }
+            }
+
+        }
+
 
         if (ReadyToActivate == false)
         {
@@ -49,60 +107,21 @@ public class StandActivator : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && ReadyToActivate == true)
         {
-            ReadyToActivate = false;
-            Vector3 SpawnPos = KnifeSpawnPoint.GetComponent<Transform>().position;
-            //SpawnPos.z += 1.5f;
-            SpawnPos.x += Random.Range(-0.5f, 0.5f);
-            SpawnPos.y += Random.Range(-0.5f, 0.5f);
-
-            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, SpawnPos, transform.rotation);
-            StandPower.GetComponent<Rigidbody>().velocity = transform.forward * speed;
-            //AudioSource audio = GetComponent<AudioSource>();
-            //audio.Play();
-
-            /*
-            if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom1 == true)
+            if(NumberOfKnivesLeft > 0)
             {
-                ShotsFiredInRoom1 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom1(ShotsFiredInRoom1);
+                ReadyToActivate = false;
+                Vector3 SpawnPos = KnifeSpawnPoint.GetComponent<Transform>().position;
+                //SpawnPos.z += 1.5f;
+                SpawnPos.x += Random.Range(-0.5f, 0.5f);
+                SpawnPos.y += Random.Range(-0.5f, 0.5f);
+
+                GameObject StandPower = (GameObject)Instantiate(PreFabToMake, SpawnPos, transform.rotation);
+                StandPower.GetComponent<Rigidbody>().velocity = transform.forward * speed;
+
+                NumberOfKnivesLeft -= 1;
             }
 
-            else if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom2 == true)
-            {
-                ShotsFiredInRoom2 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom2(ShotsFiredInRoom2);
-            }
 
-            else if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom3 == true)
-            {
-                ShotsFiredInRoom3 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom3(ShotsFiredInRoom3);
-            }
-
-            else if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom4 == true)
-            {
-                ShotsFiredInRoom4 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom4(ShotsFiredInRoom4);
-            }
-
-            else if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom5 == true)
-            {
-                ShotsFiredInRoom5 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom5(ShotsFiredInRoom5);
-            }
-
-            else if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom6 == true)
-            {
-                ShotsFiredInRoom6 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom6(ShotsFiredInRoom6);
-            }
-
-            else if (GameObject.Find("FPSController").GetComponent<WhatRoomAmITouching>().ImInRoom7 == true)
-            {
-                ShotsFiredInRoom7 += 1;
-                GameObject.Find("GlobalDataEmpty").GetComponent<DataNStuff>().UpdateNumberOfShotsInRoom7(ShotsFiredInRoom7);
-            }
-            */
         }
         
 

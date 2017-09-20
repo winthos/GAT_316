@@ -26,7 +26,7 @@ public class KnifeParticleTimeLogic : MonoBehaviour {
             PlayParticleForASecond -= Time.deltaTime;
             if(PlayParticleForASecond <= 0f && GetComponent<ParticleSystem>().isPlaying == true)
             {
-                print("pause the particle");
+               // print("pause the particle");
                 GetComponent<ParticleSystem>().Pause();
             }
         }
