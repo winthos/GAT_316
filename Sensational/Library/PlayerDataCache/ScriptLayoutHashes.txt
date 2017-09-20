@@ -1,4 +1,5 @@
 WindowsStandalone
+d8accbf73ca8e7fa263c2d620465e7e0 Assembly-CSharp.dll:.SolidConnectorLogic
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FadeThenDestroyMe
 f62d1e12c4ea2e5d19ca5a2c81b0bf32 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.TiltShift
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
@@ -17,6 +18,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 1eeca5b80a873fa1e424523147b3180b Assembly-CSharp.dll:.TheLightsInTheSky
 c08b196716247885d3b27f7f282b2568 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ImageEffectBase
+77980bd4ad5dabdaeff2897796e15e08 Assembly-CSharp.dll:.KnivesInHandController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.KnifeParticleTimeLogic
 a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BlurOptimized
 0ea7e3a1b65cd933d7a007e6774c4eaa Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.AICharacterControl
@@ -145,6 +147,7 @@ e664a72c4b9d37a3d60ba592602fdf30 Assembly-CSharp.dll:.TimeStopFilterLogic
 6e714b24188cddfc9ae1e07d05ed4ddd Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.ParticleSystemDestroyer
 879b3df2ab67cfd00172f75f85a7a583 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.SimpleMouseRotator
 9865a0db77364f8930077972a1d5efab Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BloomOptimized
+6db0440ca685cb789345ee42eeb4c639 Assembly-CSharp.dll:.TimeStopInUseImageLogic
 de0505e49035004db07344b966e62294 Assembly-CSharp.dll:.KnifeParticleSoundController
 8609e06c12232cd6404f0ca11fb77d86 Assembly-CSharp.dll:.ProjectilePlayerDetector
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -185,6 +188,7 @@ d5d500a193361149901b877f3f794306 Assembly-CSharp.dll:.OrbToHitLogic
 30db6bf1abfbd17c6cdd1385b9eba6ca Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfField
 414fe89e48e68818b0f7db1a8eefd546 Assembly-CSharp.dll:.ThrowingKnifeBehavior
 76f8de36cc679aaed62bbfaff16f925b Assembly-CSharp.dll:.BackgroundMusicLogic
+9fc56dd283281ca7d75b72ddce564120 Assembly-CSharp.dll:.KnifeButtonController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.PostEffectsHelper
 b26b3a55de2a8cbeee573d45c8848f09 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenSpaceAmbientOcclusion
 75def28a72aa7db1057fc65d7496f0ed Assembly-CSharp.dll:.Room1Data
@@ -255,7 +259,3 @@ b3432dfe180f02232d7612fb366593d3 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 2cc7fb94485a735c54126456c2613c91 Assembly-CSharp.dll:.DataNStuff
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.HitCountLogic
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-6db0440ca685cb789345ee42eeb4c639 Assembly-CSharp.dll:.TimeStopInUseImageLogic
-77980bd4ad5dabdaeff2897796e15e08 Assembly-CSharp.dll:.KnivesInHandController
-9fc56dd283281ca7d75b72ddce564120 Assembly-CSharp.dll:.KnifeButtonController
-d8accbf73ca8e7fa263c2d620465e7e0 Assembly-CSharp.dll:.SolidConnectorLogic
