@@ -237,7 +237,7 @@ public class OrbLogicAttempt : MonoBehaviour
         {
             SomethingTouchedMe = true;
             HowManyTimesHaveIBeenPunched++;
-            print(HowManyTimesHaveIBeenPunched);
+            //print(HowManyTimesHaveIBeenPunched);
             gameObject.GetComponent<Renderer>().material = clear;
             gameObject.GetComponent<Transform>().localScale = gameObject.transform.localScale / 3;
             active = false;

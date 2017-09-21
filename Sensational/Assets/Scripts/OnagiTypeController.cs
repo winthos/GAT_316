@@ -18,6 +18,11 @@ public class OnagiTypeController : MonoBehaviour
     public GameObject PlayerSpawn;
     private SphereCollider MySphere;
 
+    public int Health = 10;
+    public bool SpawnerActive = false;
+
+    public GameObject DeathExplosion;
+
     // Use this for initialization
     void Start () 
     {
@@ -26,11 +31,19 @@ public class OnagiTypeController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         PlayerSpawn = GameObject.Find("PlayerSpawnPoint");
         MySphere = gameObject.GetComponentInChildren<SphereCollider>();
+        gameObject.GetComponent<AlwaysLookAt>().WhereAreYou = WhereIsThePlayerOhMyGod;
     }
 	
 	// Update is called once per frame
 	void Update () 
     {
+        if(Health <= 0)
+        {
+            SpawnerActive = true;
+            GameObject StandPower = (GameObject)Instantiate(DeathExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+            
         rb.AddRelativeForce(Vector3.forward * thrust);
         if (TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true)
         {

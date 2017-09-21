@@ -36,6 +36,10 @@ public class StandActivator : MonoBehaviour
 
     public GameObject KnivesInHand;
 
+    public bool Checkmate = false;
+    public GameObject InfinitySigns;
+    public GameObject KnifeBar;
+
     // Use this for initialization
     void Start()
     {
@@ -46,7 +50,37 @@ public class StandActivator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int index = 0; index < 10 - NumberOfKnivesLeft; index++)
+
+        //////////CHECKMATE DA//////////////////
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            if(Checkmate == false)
+            {
+                Checkmate = true;
+            }
+
+            else
+            {
+                Checkmate = false;
+            }
+        }
+
+        if(Checkmate == true)
+        {
+            KnivesInHand.SetActive(false);
+            InfinitySigns.SetActive(true);
+            KnifeBar.SetActive(false);
+        }
+
+        if (Checkmate == false)
+        {
+            KnivesInHand.SetActive(true);
+            InfinitySigns.SetActive(false);
+            KnifeBar.SetActive(true);
+        }
+        ///////////////////////////////////////
+
+        for (int index = 0; index < 10 - NumberOfKnivesLeft; index++)
         {
             KnifeUIStuff[index].GetComponent<Image>().enabled = false;
             KnifeModels[index].SetActive(false);
@@ -122,6 +156,17 @@ public class StandActivator : MonoBehaviour
             }
 
 
+        }
+
+        if(Input.GetMouseButtonDown(0) && Checkmate == true)
+        {
+            Vector3 SpawnPos = KnifeSpawnPoint.GetComponent<Transform>().position;
+            //SpawnPos.z += 1.5f;
+            SpawnPos.x += Random.Range(-0.5f, 0.5f);
+            SpawnPos.y += Random.Range(-0.5f, 0.5f);
+
+            GameObject StandPower = (GameObject)Instantiate(PreFabToMake, SpawnPos, transform.rotation);
+            StandPower.GetComponent<Rigidbody>().velocity = transform.forward * speed;
         }
         
 

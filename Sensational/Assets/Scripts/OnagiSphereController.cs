@@ -7,6 +7,7 @@ public class OnagiSphereController : MonoBehaviour
     public Transform PlayerSpawn;
     private DamageFlashController DamageFlashOnCanvas;
 
+    public GameObject HitParticle = null;
     // Use this for initialization
     void Start () 
     {
@@ -27,6 +28,13 @@ public class OnagiSphereController : MonoBehaviour
             print("touched the player w/ sphere");
             other.gameObject.GetComponent<Transform>().position = PlayerSpawn.position;
             DamageFlashOnCanvas.EnableScreen();
+        }
+
+        if(other.gameObject.tag == "DoYouUnderstand")
+        {
+            //lose health when hit by any dagger
+            gameObject.GetComponentInParent<OnagiTypeController>().Health--;
+            GameObject StandPower = (GameObject)Instantiate(HitParticle, transform.position, transform.rotation);
         }
     }
 }

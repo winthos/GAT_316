@@ -62,7 +62,7 @@ public class ThrowingKnifeBehavior : MonoBehaviour
             if (stoptimeLerpdone == false)
             {
                 //counter that is incremented with time / how long it takes to get to zero
-                //MyBody.velocity = Vector3.Lerp(OldVelocity, Vector3.zero, lerpToStopCounter / slowdownSpeed);
+                MyBody.velocity = Vector3.Lerp(OldVelocity, Vector3.zero, lerpToStopCounter / slowdownSpeed);
                 lerpToStopCounter += Time.deltaTime;
             }
         }
@@ -88,11 +88,12 @@ public class ThrowingKnifeBehavior : MonoBehaviour
             //    GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
             //     Destroy(gameObject);
             // }
+            MyBody.velocity = OldVelocity;
 
-            if (timeNotStoppedYet == false)
+            /*if (timeNotStoppedYet == false)
             {
                 MyBody.velocity = OldVelocity;
-            }
+            }*/
 
             if (timeNotStoppedYet == true)
             {
@@ -108,7 +109,7 @@ public class ThrowingKnifeBehavior : MonoBehaviour
                 // MyBody.velocity = OldVelocity;
                 if (normaltimeLerpdone == false)
                 {
-                    MyBody.velocity = Vector3.Lerp(Vector3.zero, OldVelocity, lerpToStopCounter / slowdownSpeed);
+                    //MyBody.velocity = Vector3.Lerp(Vector3.zero, OldVelocity, lerpToStopCounter / slowdownSpeed);
                     lerpToStopCounter += Time.deltaTime;
                 }
 
@@ -122,8 +123,8 @@ public class ThrowingKnifeBehavior : MonoBehaviour
     {
         if (col.gameObject.tag == "DoYouUnderstand" || col.gameObject.tag == "StandIgnore")
         {
-           // print("a knife touched another knife");
-            Physics.IgnoreCollision(col.collider, GetComponent<Collider>());
+            // print("a knife touched another knife");
+            Physics.IgnoreCollision(col.collider, GetComponent<Collider>(), true);
 
             /*if (col.gameObject.tag == "StandIgnore")
             {
@@ -133,7 +134,6 @@ public class ThrowingKnifeBehavior : MonoBehaviour
 
             }*/
 
-            return;
         }
 
         else
@@ -160,5 +160,14 @@ public class ThrowingKnifeBehavior : MonoBehaviour
              Destroy(gameObject);
          }
          */
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.tag == "DoYouUnderstand")
+        {
+            print("knife collide");
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>(), true);
+        }
     }
 }

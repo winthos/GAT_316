@@ -167,7 +167,7 @@ public class ProjectileTimeStopLogic : MonoBehaviour
         //print(col.gameObject.tag);
         if (col.gameObject.tag == "DoYouUnderstand")
         {
-            print("touched a knife");
+            //print("touched a knife");
             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
 
             if (AmIOnCube == false)

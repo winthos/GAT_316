@@ -33,6 +33,9 @@ public class LevelGlobals : MonoBehaviour
     public bool OnagiTimeStopped = false;
 
     private float greyscalecounter = 0f;
+
+    public GameObject CurrentCheckpoint = null;
+
 	// Use this for initialization
 	void Start () 
 	{
