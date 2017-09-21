@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnifeSpawnerController : MonoBehaviour 
 {
-    private bool TimeState;
+    public GameObject LevelGlobals;
     public float SpawnDelay = 2.0f;
     public float SpawnCounter = 0.0f;
 
@@ -14,13 +14,13 @@ public class KnifeSpawnerController : MonoBehaviour
     // Use this for initialization
     void Start () 
     {
-        TimeState = GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeStopped;
+        LevelGlobals = GameObject.Find("LevelGlobals");
     }
 	
 	// Update is called once per frame
 	void Update () 
     {
-		if(TimeState == false)
+		if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
         {
             SpawnCounter += Time.deltaTime;
             if(SpawnCounter >= SpawnDelay)

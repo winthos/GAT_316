@@ -1,6 +1,7 @@
 WindowsStandalone
 d8accbf73ca8e7fa263c2d620465e7e0 Assembly-CSharp.dll:.SolidConnectorLogic
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FadeThenDestroyMe
+f5e3fb61bec1333c19d545fbffe26649 Assembly-CSharp.dll:.OnagiSphereController
 f62d1e12c4ea2e5d19ca5a2c81b0bf32 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.TiltShift
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 11e624a626c38a2b72b822c7c213b3d6 Assembly-CSharp.dll:.OrbLogicAttempt
@@ -21,6 +22,7 @@ c08b196716247885d3b27f7f282b2568 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 1df5fcfb048bd6e7d6a653f10a9c6d19 Assembly-CSharp.dll:.KnivesInHandController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.KnifeParticleTimeLogic
 a30beadf4d109f44144b9a9f42e61cbf Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BlurOptimized
+3d2575dda343f9e65ab13ff9ed2056ad Assembly-CSharp.dll:.KnifeSpawnerController
 0ea7e3a1b65cd933d7a007e6774c4eaa Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.ThirdPerson.AICharacterControl
 7481472d4e57e8477d484d43a43b79dc Assembly-CSharp-firstpass.dll:UnityStandardAssets.Characters.FirstPerson.FirstPersonController
 bdce0f81437ed8912d08855f94a163e1 Assembly-CSharp.dll:.DrawnLaser
@@ -66,6 +68,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 5e65ba4c49a3db4f401395c74cb98f93 Assembly-CSharp.dll:.AlwaysLookAt
 8e9f5b922979e9356a11d2ee2b32ee60 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TiltInput
+87b764dd580a6549a3bee40297d51df4 Assembly-CSharp.dll:.CheckpointController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.persistantClockSoundLogic
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -122,7 +125,7 @@ c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.T
 66e5aa91535586c5f0e87adc38b2e30b Assembly-CSharp.dll:.DamageFlashController
 38f2aefc9dcf0f8107e7bd37238b3096 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Blur
 f5ce04d51633a5a2e05a731aa45ef200 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.MotionBlur
-052d8fbc71215dbab8b817bce191593f Assembly-CSharp.dll:.LevelGlobals
+9674b9fcac98cb56388ebacaedd1f69b Assembly-CSharp.dll:.LevelGlobals
 73078767786a2f8c5f1aa89387b11592 Assembly-CSharp.dll:.StandMoveForward
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -214,12 +217,14 @@ b1f0704fc1b542c80ecf3fa1bbf472a1 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 6cf7ed52312a0e555694eea532a1cb89 Assembly-CSharp.dll:.BillboardFadeInWithDistance
 e2b50e4e1e5006d87e7ebe8a724e8f6d Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ContrastEnhance
 75def28a72aa7db1057fc65d7496f0ed Assembly-CSharp.dll:.Room5Data
+4a49209e6c93b2f35082adb11056d0fb Assembly-CSharp.dll:.OnagiSpawner
 6cf7ed52312a0e555694eea532a1cb89 Assembly-CSharp.dll:.FadeWithDistance
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
 5f2ad81aa8994e8fbe25d1e57afe6773 UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.PlaymodeTestsController
 64eb32cc721b1cc68a91ed57461e188c UnityEngine.TestRunner.dll:UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp-firstpass.dll:.AlphaButtonClickMask
 a4f705bffe804a98d42b7509f579253e Assembly-CSharp.dll:.ColorChanger
+27e8c6b232ebd9179e84d4a083444589 Assembly-CSharp.dll:.OnagiTypeController
 d2af69ce28cda6fcf0b7728ae3f251b4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.DynamicShadowSettings
 8644a51a6b3a79971d578a76ea863e0c Assembly-CSharp.dll:.SwitchToLevel
 00566559aaf2ba51543e32371603951b Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.NoiseAndGrain
@@ -242,6 +247,7 @@ a8796ecdc9d5c260bbe32f30c4b10708 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 b7f557c19cce3b6f593e26edfe1ec859 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Ball.Ball
 0ad469aca31264c6140b1e503c43ab6b Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.TimedObjectDestructor
 bb2ed5f14878aed30bda552393b3b36f Assembly-CSharp.dll:.StickOnPlatform
+8ece0fc2c9fb752b013b15f66ca7f724 Assembly-CSharp.dll:.DeathZoneController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.TimeStopSoundLogic
 5a96c88e9e880a1098573715350ae96f Assembly-CSharp.dll:.Laser
 53dbd7baa3c8da2f87828dd70d70dae4 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.DepthOfFieldDeprecated
@@ -253,11 +259,12 @@ e2a8fd4524fc2a3a236b7e7720b544a6 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 b3432dfe180f02232d7612fb366593d3 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ColorCorrectionLookup
 3ae0dad0b55a80319e1d57c2dce28da7 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.Tonemapping
 09683256df5f3e73634b30cc2c30ef36 Assembly-CSharp.dll:.LookAtTarget
-3e19a27f0a6ec37cd58b97ed0bd2309c Assembly-CSharp.dll:.StandActivator
+8acdf7a304549c40b70f66ef24660997 Assembly-CSharp.dll:.StandActivator
 6cf7ed52312a0e555694eea532a1cb89 Assembly-CSharp.dll:.AppearWithDistance
 8aebe0201953e59899eac6dd2557e1a1 Assembly-CSharp.dll:.SaveTest
 2cc7fb94485a735c54126456c2613c91 Assembly-CSharp.dll:.DataNStuff
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.HitCountLogic
 0f3d4bb7128a287827d041c696039525 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.AutoMobileShaderSwitch
-addfb0756896c27dc5ce55ae4212c880 Assembly-CSharp.dll:.OnagiTypeController
-8d680c723e2fe7959e95101402fbb109 Assembly-CSharp.dll:.OnagiSphereController
+112d0ff16da36ecfb9263e12bf19be4a Assembly-CSharp.dll:.WASDandMOUSE
+56bf2583201ad3ac8f199ceac4c39c11 Assembly-CSharp.dll:.SHIFT
+af638974d56a7e32e6a825de4e032b90 Assembly-CSharp.dll:.RightClick

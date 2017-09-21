@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\RightClick.cs" />
     <Compile Include="Assets\Scripts\AlwaysLookAt.cs" />
     <Compile Include="Assets\Scripts\AnotherBackAndForth.cs" />
     <Compile Include="Assets\Scripts\AppearWithDistance.cs" />
@@ -150,6 +151,8 @@
     <Compile Include="Assets\Scripts\TimeStopParticlesOnMe.cs" />
     <Compile Include="Assets\Scripts\TimeStopSoundLogic.cs" />
     <Compile Include="Assets\Scripts\WaitThenDestroy.cs" />
+    <Compile Include="Assets\SHIFT.cs" />
+    <Compile Include="Assets\WASDandMOUSE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\NewUnlitShader.shader" />

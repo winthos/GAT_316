@@ -52,7 +52,7 @@ public class StandActivator : MonoBehaviour
     {
 
         //////////CHECKMATE DA//////////////////
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.P))
         {
             if(Checkmate == false)
             {

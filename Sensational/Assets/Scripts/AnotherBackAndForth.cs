@@ -72,7 +72,7 @@ public class AnotherBackAndForth : MonoBehaviour
 
             if(stoptimeLerpdone == false)
             {
-                newspeed = Mathf.Lerp(speed, 0, counter / SlowDownDuration);
+                newspeed = 0;// put this back if I want to lerp it to a stopMathf.Lerp(speed, 0, counter / SlowDownDuration);
                 counter += Time.deltaTime;
             }
 
