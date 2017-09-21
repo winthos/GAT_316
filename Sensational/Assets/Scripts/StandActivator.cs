@@ -9,7 +9,7 @@ public class StandActivator : MonoBehaviour
     public GameObject PreFabToMake;
     public float Cooldown = 2f;
     public float TimeStopCooldown = 0.2f;
-    private float CoolDownTimer;
+    public float CoolDownTimer;
 
     public bool ReadyToActivate = true;
 
@@ -45,14 +45,24 @@ public class StandActivator : MonoBehaviour
     {
         CoolDownTimer = Cooldown;
         TimeGlobal = GameObject.Find("LevelGlobals");
+        GetComponent<AudioSource>().PlayOneShot(ReloadClip);
+       // KnifeBar.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(NumberOfKnivesLeft >0)
+        {
+            KnifeBar.GetComponent<Image>().enabled = false;
+        }
 
+        if (NumberOfKnivesLeft <= 0)
+        {
+            KnifeBar.GetComponent<Image>().enabled = true;
+        }
         //////////CHECKMATE DA//////////////////
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if(Checkmate == false)
             {
@@ -76,13 +86,13 @@ public class StandActivator : MonoBehaviour
         {
             KnivesInHand.SetActive(true);
             InfinitySigns.SetActive(false);
-            KnifeBar.SetActive(true);
+            //KnifeBar.SetActive(true);
         }
         ///////////////////////////////////////
 
         for (int index = 0; index < 10 - NumberOfKnivesLeft; index++)
         {
-            KnifeUIStuff[index].GetComponent<Image>().enabled = false;
+            //KnifeUIStuff[index].GetComponent<Image>().enabled = false;
             KnifeModels[index].SetActive(false);
         }
         
@@ -110,15 +120,17 @@ public class StandActivator : MonoBehaviour
                 KnifeCooldownBar.GetComponent<Image>().fillAmount =  KniveReloadCounter / HowMuchLongerTillIHaveMoreKnives;
                 if (KniveReloadCounter >= HowMuchLongerTillIHaveMoreKnives)
                 {
+                    
                     //here we reload our knives n stuff
                     NumberOfKnivesLeft = 10;
                     KniveReloadCounter = 0f; //reset the counter oops
                     KnifeCooldownBar.GetComponent<Image>().fillAmount = 0;
                     KnivesInHand.GetComponent<KnivesInHandController>().Reset();
                     GetComponent<AudioSource>().PlayOneShot(ReloadClip);
+                    KnifeBar.SetActive(false);
                     for (int index = 0; index < NumberOfKnivesLeft; index++)
                     {
-                        KnifeUIStuff[index].GetComponent<Image>().enabled = true;
+                        //KnifeUIStuff[index].GetComponent<Image>().enabled = true;
                         KnifeModels[index].SetActive(true);
                     }
                 }
@@ -129,6 +141,9 @@ public class StandActivator : MonoBehaviour
 
         if (ReadyToActivate == false)
         {
+            //if(NumberOfKnivesLeft == 10)
+            
+
             CoolDownTimer -= Time.deltaTime;
             CooldownCursor.GetComponent<Image>().fillAmount = CoolDownTimer / Cooldown;
             //print(CoolDownTimer);
@@ -136,6 +151,7 @@ public class StandActivator : MonoBehaviour
             {
                 CoolDownTimer = Cooldown;
                 ReadyToActivate = true;
+                KnifeBar.SetActive(true);
             }
         }
 

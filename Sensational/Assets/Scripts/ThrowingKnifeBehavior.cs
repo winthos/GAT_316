@@ -118,12 +118,30 @@ public class ThrowingKnifeBehavior : MonoBehaviour
     }
 
 
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "DoYouUnderstand" || col.gameObject.tag == "StandIgnore")
+        {
+            // print("a knife touched another knife");
+            //if (GetComponent<Rigidbody>().isKinematic == false)
+                Physics.IgnoreCollision(col.collider, GetComponent<Collider>(), false);
 
+            /*if (col.gameObject.tag == "StandIgnore")
+            {
+                print("knife touched the player");
+                Physics.IgnoreCollision(col.collider, GetComponent<Collider>());
+                return;
+
+            }*/
+
+        }
+    }
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "DoYouUnderstand" || col.gameObject.tag == "StandIgnore")
         {
             // print("a knife touched another knife");
+            if (GetComponent<Rigidbody>().isKinematic == false)
             Physics.IgnoreCollision(col.collider, GetComponent<Collider>(), true);
 
             /*if (col.gameObject.tag == "StandIgnore")

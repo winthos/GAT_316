@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class CheckpointController : MonoBehaviour 
 {
     //player stepping on this will cause the CurrentCheckpoint in LevelGlobals to be set to this position
@@ -16,6 +16,8 @@ public class CheckpointController : MonoBehaviour
 
     public bool AmIALevelSwitchCheckpoint = false;
     public string LevelToLoad = null;
+    public GameObject CheckpointText;
+
 	// Use this for initialization
 	void Start () 
     {
@@ -43,7 +45,7 @@ public class CheckpointController : MonoBehaviour
 
 	}
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "StandIgnore")
         {
@@ -56,9 +58,25 @@ public class CheckpointController : MonoBehaviour
             {
                 LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.GetComponent<CheckpointController>().AmITheActiveCheckpoint = false;
             }*/
+            if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
+            {
+                LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint = SpawnPosition;
 
-            LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint = SpawnPosition;
-            AmITheActiveCheckpoint = true;
+                if(AmITheActiveCheckpoint != true)
+                {
+                    AmITheActiveCheckpoint = true;
+                    CheckpointText.SetActive(true);
+                }
+               // AmITheActiveCheckpoint = true;
+               // CheckpointText.SetActive(true);
+            }
+
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "StandIgnore")
+            CheckpointText.SetActive(false);
     }
 }
