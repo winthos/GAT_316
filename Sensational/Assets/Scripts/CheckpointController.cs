@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public class CheckpointController : MonoBehaviour 
+public class CheckpointController : MonoBehaviour
 {
     //player stepping on this will cause the CurrentCheckpoint in LevelGlobals to be set to this position
 
@@ -16,19 +17,24 @@ public class CheckpointController : MonoBehaviour
 
     public bool AmIALevelSwitchCheckpoint = false;
     public string LevelToLoad = null;
-	// Use this for initialization
-	void Start () 
+
+    public GameObject CheckpointText;
+
+    public bool FirstTimePlayerTouch = false;
+    // Use this for initialization
+    void Start()
     {
         //TimeState = GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeStopped;
 
         LevelGlobals = GameObject.Find("LevelGlobals");
         //awnPosition = gameObject.GetComponentInChildren<Transform>();
+        //CheckpointText = GameObject.Find("Canvas/CheckpointText");
     }
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update()
     {
-        if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
+        if (LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
         {
             if (AmITheActiveCheckpoint == true)
             {
@@ -41,13 +47,18 @@ public class CheckpointController : MonoBehaviour
             }
         }
 
-	}
+    }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "StandIgnore")
         {
-            if(AmIALevelSwitchCheckpoint == true)
+            if (LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
+            {
+                CheckpointText.SetActive(true);
+
+            }
+            if (AmIALevelSwitchCheckpoint == true)
             {
                 SceneManager.LoadScene(LevelToLoad);
             }
@@ -59,6 +70,15 @@ public class CheckpointController : MonoBehaviour
 
             LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint = SpawnPosition;
             AmITheActiveCheckpoint = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "StandIgnore")
+        {
+            CheckpointText.SetActive(false);
+            FirstTimePlayerTouch = true; //from now on this is true if the player touched this once.
         }
     }
 }
