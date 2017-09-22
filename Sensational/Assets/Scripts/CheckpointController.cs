@@ -17,7 +17,10 @@ public class CheckpointController : MonoBehaviour
     public bool AmIALevelSwitchCheckpoint = false;
     public string LevelToLoad = null;
     public GameObject CheckpointText;
+    public AudioClip CheckSound;
+    public float LevelSwitchDelay = 5.0f;
 
+    public bool startLevelSwitchSequence = false;
 	// Use this for initialization
 	void Start () 
     {
@@ -43,7 +46,32 @@ public class CheckpointController : MonoBehaviour
             }
         }
 
-	}
+        //when we need tos witch levels
+        if (startLevelSwitchSequence == true)
+        {
+        //wait for a bit, but also disable player movement?
+            
+            LevelSwitchDelay -= Time.deltaTime;
+            if(LevelSwitchDelay <= 0)
+            {
+                SceneManager.LoadScene(LevelToLoad);
+
+            }
+
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "StandIgnore")
+        {
+            if (LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false && AmITheActiveCheckpoint == false)
+            {
+                GetComponent<AudioSource>().PlayOneShot(CheckSound);
+
+            }
+        }
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -51,7 +79,10 @@ public class CheckpointController : MonoBehaviour
         {
             if(AmIALevelSwitchCheckpoint == true)
             {
-                SceneManager.LoadScene(LevelToLoad);
+                //start the delay to level switch, but also activate level switch sound on player
+                //and turn on the fancy level switch particle
+                other.gameObject.GetComponentInChildren<StandActivator>().TeleportParticle.SetActive(true);
+                startLevelSwitchSequence = true;
             }
             //if the player touches me
             /*if(LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint != null)
@@ -65,6 +96,8 @@ public class CheckpointController : MonoBehaviour
                 if(AmITheActiveCheckpoint != true)
                 {
                     AmITheActiveCheckpoint = true;
+
+                    if(AmIALevelSwitchCheckpoint == false)
                     CheckpointText.SetActive(true);
                 }
                // AmITheActiveCheckpoint = true;

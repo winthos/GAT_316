@@ -27,6 +27,7 @@ public class DeathZoneController : MonoBehaviour
             //if the player touched me, reset their position
             //LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint = gameObject;
             other.gameObject.GetComponent<Transform>().position = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.position;
+          //  other.gameObject.GetComponent<Transform>().forward = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.forward;
             DamageFlashOnCanvas.EnableScreen();
         }
     }

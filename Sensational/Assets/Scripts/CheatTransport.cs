@@ -14,6 +14,8 @@ public class CheatTransport : MonoBehaviour
     */
     Transform PlayerPosition;
 
+    public GameObject[] TeleportSpots;
+
     // Use this for initialization
     void Start()
     {
@@ -24,43 +26,43 @@ public class CheatTransport : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1") && TeleportSpots.Length >= 1)
         {
-            PlayerPosition.position = new Vector3(3.18f, -1.61f, -22.426f);
+            PlayerPosition.position = TeleportSpots[0].transform.position;//new Vector3(3.18f, -1.61f, -22.426f);
         }
 
-        if (Input.GetKeyDown("2"))
+        if (Input.GetKeyDown("2") && TeleportSpots.Length >= 2)
         {
-            PlayerPosition.position = new Vector3(2.23f, -2.8f, 58.7f);
+            PlayerPosition.position = TeleportSpots[1].transform.position;//new Vector3(2.23f, -2.8f, 58.7f);
         }
 
-        if (Input.GetKeyDown("3"))
+        if (Input.GetKeyDown("3") && TeleportSpots.Length >= 3)
         {
-            PlayerPosition.position = new Vector3(2f, -3f, 143f);
+            PlayerPosition.position = TeleportSpots[2].transform.position;//new Vector3(2f, -3f, 143f);
         }
 
-        if (Input.GetKeyDown("4"))
+        if (Input.GetKeyDown("4") && TeleportSpots.Length >= 4)
         {
-            PlayerPosition.position = new Vector3(1f, -3f, 224f);
+            PlayerPosition.position = TeleportSpots[3].transform.position;//new Vector3(1f, -3f, 224f);
         }
 
-        if(Input.GetKeyDown("5"))
+        if(Input.GetKeyDown("5") && TeleportSpots.Length >= 5)
         {
-            PlayerPosition.position = new Vector3(0.5f, -19f, 310f);
+            PlayerPosition.position = TeleportSpots[4].transform.position;//new Vector3(0.5f, -19f, 310f);
         }
 
-        if (Input.GetKeyDown("6"))
+        if (Input.GetKeyDown("6") && TeleportSpots.Length >= 6)
         {
-            PlayerPosition.position = new Vector3(0.5f, -19f, 394f);
+            PlayerPosition.position = TeleportSpots[5].transform.position;//new Vector3(0.5f, -19f, 394f);
         }
 
-        if (Input.GetKeyDown("7"))
+        if (Input.GetKeyDown("7") && TeleportSpots.Length >= 7)
         {
-            PlayerPosition.position = new Vector3(0.5f, -19f, 470f);
+            PlayerPosition.position = TeleportSpots[6].transform.position;//new Vector3(0.5f, -19f, 470f);
         }
-        if (Input.GetKeyDown("8"))
+        if (Input.GetKeyDown("8") && TeleportSpots.Length >= 8)
         {
-            PlayerPosition.position = new Vector3(0.5f, -19f, 650f);
+            PlayerPosition.position = TeleportSpots[7].transform.position; //new Vector3(0.5f, -19f, 650f);
         }
 
         if (Input.GetKeyDown("0"))

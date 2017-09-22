@@ -40,6 +40,10 @@ public class StandActivator : MonoBehaviour
     public GameObject InfinitySigns;
     public GameObject KnifeBar;
 
+    public GameObject TeleportParticle;
+
+    public bool ReloadNow = false;
+
     // Use this for initialization
     void Start()
     {
@@ -52,6 +56,11 @@ public class StandActivator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.R) && CoolDownTimer == 1)
+        {
+            ReloadNow = true;    
+        }
+
         if(NumberOfKnivesLeft >0)
         {
             KnifeBar.GetComponent<Image>().enabled = false;
@@ -113,7 +122,7 @@ public class StandActivator : MonoBehaviour
 
             //if we are in normal time and we are out of knives, begin knife reload timer
 
-            if(NumberOfKnivesLeft <= 0)
+            if((NumberOfKnivesLeft <= 0 || ReloadNow == true) && NumberOfKnivesLeft != 10)
             {
                 KniveReloadCounter += Time.deltaTime;
                 
@@ -132,6 +141,7 @@ public class StandActivator : MonoBehaviour
                     {
                         //KnifeUIStuff[index].GetComponent<Image>().enabled = true;
                         KnifeModels[index].SetActive(true);
+                        ReloadNow = false;
                     }
                 }
             }
