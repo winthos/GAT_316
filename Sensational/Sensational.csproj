@@ -85,12 +85,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\KnifePickupController.cs" />
+    <Compile Include="Assets\MainMenuTimeToggle.cs" />
     <Compile Include="Assets\RightClick.cs" />
     <Compile Include="Assets\Scripts\AlwaysLookAt.cs" />
     <Compile Include="Assets\Scripts\AnotherBackAndForth.cs" />
     <Compile Include="Assets\Scripts\AppearWithDistance.cs" />
     <Compile Include="Assets\Scripts\BackgroundMusicLogic.cs" />
     <Compile Include="Assets\Scripts\BillboardFadeInWithDistance.cs" />
+    <Compile Include="Assets\Scripts\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\CheatTransport.cs" />
     <Compile Include="Assets\Scripts\CheckpointController.cs" />
     <Compile Include="Assets\Scripts\ClockLogic.cs" />

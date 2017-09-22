@@ -6,11 +6,21 @@ public class BackgroundMusicLogic : MonoBehaviour
     private bool IsTimeStopped;
     public float NewPitch = 1.37f;
     public float NewVolume = 0.4f;
+
+    private float OriginalVolume;
+    private float OriginalPitch;
 	// Use this for initialization
+
 	void Start () 
 	{
         IsTimeStopped = GameObject.Find("LevelGlobals").GetComponent<LevelGlobals>().TimeStopped;
-	}
+        AudioSource source = GetComponent<AudioSource>();
+        // source.volume = OriginalVolume;
+        //print(source.volume);
+        //source.pitch = OriginalPitch;
+        OriginalPitch = source.pitch;
+        OriginalVolume = source.volume;
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -39,8 +49,8 @@ public class BackgroundMusicLogic : MonoBehaviour
             zone.enabled = false;
 
             AudioSource source = GetComponent<AudioSource>();
-            source.volume = 1.0f;
-            source.pitch = 1.0f;
+            source.volume = OriginalVolume;
+            source.pitch = OriginalPitch;
         }
 
 	}
