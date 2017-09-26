@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class ProjectileTimeStopLogic : MonoBehaviour 
 {
@@ -155,7 +156,8 @@ public class ProjectileTimeStopLogic : MonoBehaviour
             print("touched the player");
             DamageFlashOnCanvas.EnableScreen();
             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
-
+            //col.gameObject.GetComponent<Transform>().position = TimeGlobal.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.position;
+            GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
             if (AmIOnCube == false)
             {
                 Destroy(gameObject);

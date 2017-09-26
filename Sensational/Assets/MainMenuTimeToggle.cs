@@ -18,6 +18,8 @@ public class MainMenuTimeToggle : MonoBehaviour
     {
         counter = Random.Range(2.0f, 6.0f);
         WhereIsThePlayerOhMyGod = GameObject.Find("FPSController/FirstPersonCharacter");
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 	
 	// Update is called once per frame

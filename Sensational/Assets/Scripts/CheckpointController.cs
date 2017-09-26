@@ -33,8 +33,9 @@ public class CheckpointController : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-        if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
-        {
+        
+      //  if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
+        //{
             if (AmITheActiveCheckpoint == true)
             {
                 IsThisActive.SetActive(true);
@@ -44,13 +45,13 @@ public class CheckpointController : MonoBehaviour
             {
                 IsThisActive.SetActive(false);
             }
-        }
+        //}
 
         //when we need tos witch levels
         if (startLevelSwitchSequence == true)
         {
-        //wait for a bit, but also disable player movement?
-            
+            //wait for a bit, but also disable player movement?
+            LevelGlobals.GetComponent<LevelGlobals>().TimeStopped = false;
             LevelSwitchDelay -= Time.deltaTime;
             if(LevelSwitchDelay <= 0)
             {
@@ -65,11 +66,12 @@ public class CheckpointController : MonoBehaviour
     {
         if (other.gameObject.tag == "StandIgnore")
         {
-            if (LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false && AmITheActiveCheckpoint == false)
-            {
+           // if (LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false && AmITheActiveCheckpoint == false)
+            //{
+            if(AmITheActiveCheckpoint == false)
                 GetComponent<AudioSource>().PlayOneShot(CheckSound);
 
-            }
+            //}
         }
     }
 
@@ -89,8 +91,8 @@ public class CheckpointController : MonoBehaviour
             {
                 LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.GetComponent<CheckpointController>().AmITheActiveCheckpoint = false;
             }*/
-            if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
-            {
+            //if(LevelGlobals.GetComponent<LevelGlobals>().TimeStopped == false)
+            //{
                 LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint = SpawnPosition;
 
                 if(AmITheActiveCheckpoint != true)
@@ -102,7 +104,7 @@ public class CheckpointController : MonoBehaviour
                 }
                // AmITheActiveCheckpoint = true;
                // CheckpointText.SetActive(true);
-            }
+            //}
 
         }
     }

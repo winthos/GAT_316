@@ -32,6 +32,10 @@ public class ShootLogic : MonoBehaviour
 
     public bool active = false;
 
+    public bool readytodestroy = false;
+
+    public GameObject MyBarrel = null;
+
     // Use this for initialization
     void Start () 
 	{
@@ -44,6 +48,15 @@ public class ShootLogic : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+        if(readytodestroy == true)
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            // gameObject.GetComponentInChildren<Transform>().active
+            MyBarrel.SetActive(false);
+            if (TurretSound.isPlaying == false)
+                Destroy(gameObject);
+        }
+
         if(TimeGlobal.GetComponent<LevelGlobals>().TimeStopped == true)
         {
             return;
@@ -87,7 +100,8 @@ public class ShootLogic : MonoBehaviour
                 SlowYourRoll = false;
                 counter = 0f;
                 Rending.material = grey;
-
+                //Destroy(gameObject);
+                readytodestroy = true;
             }
 
         }
