@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public class LevelGlobals : MonoBehaviour 
 {
@@ -80,16 +79,8 @@ public class LevelGlobals : MonoBehaviour
             cooldowntext.color = Color.red;
             cooldowntext.text = "COOLDOWN: " + (4 - StopCountDuration).ToString("F2");
 
-            //done taking damage, time stop ready
-           // WhereIsThePlayerOhMyGod.transform.localPosition = new Vector3(WhereIsThePlayerOhMyGod.transform.localPosition.x + 10, WhereIsThePlayerOhMyGod.transform.localPosition.y + 10, WhereIsThePlayerOhMyGod.transform.localPosition.z + 10);
             if (StopCountDuration >= StopCountCooldown)
             {
-                //give control pack to player
-                GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = true;
-                //reset player to the checkpoint
-                //other.gameObject.GetComponent<Transform>().position = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.position;
-                GameObject.Find("FPSController").GetComponent<Transform>().position = CurrentCheckpoint.transform.position;
-
                 GameObject.Find("FPSController/rechargedone").GetComponent<AudioSource>().Play();
                 StopCounter = 0;
                 StopCountDuration = 0;
