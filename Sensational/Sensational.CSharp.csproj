@@ -84,15 +84,21 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\KnifePickupController.cs" />
+    <Compile Include="Assets\MainMenuTimeToggle.cs" />
+    <Compile Include="Assets\RightClick.cs" />
     <Compile Include="Assets\Scripts\AlwaysLookAt.cs" />
     <Compile Include="Assets\Scripts\AnotherBackAndForth.cs" />
     <Compile Include="Assets\Scripts\AppearWithDistance.cs" />
     <Compile Include="Assets\Scripts\BackgroundMusicLogic.cs" />
     <Compile Include="Assets\Scripts\BillboardFadeInWithDistance.cs" />
+    <Compile Include="Assets\Scripts\ButtonManager.cs" />
     <Compile Include="Assets\Scripts\CheatTransport.cs" />
+    <Compile Include="Assets\Scripts\CheckpointController.cs" />
     <Compile Include="Assets\Scripts\ClockLogic.cs" />
     <Compile Include="Assets\Scripts\ColorChanger.cs" />
     <Compile Include="Assets\Scripts\DamageFlashController.cs" />
+    <Compile Include="Assets\Scripts\DeathZoneController.cs" />
     <Compile Include="Assets\Scripts\Depricated\DataNStuff.cs" />
     <Compile Include="Assets\Scripts\Depricated\FinishLineLogic.cs" />
     <Compile Include="Assets\Scripts\Depricated\ForwardAndBack.cs" />
@@ -113,11 +119,19 @@
     <Compile Include="Assets\Scripts\FollowLine.cs" />
     <Compile Include="Assets\Scripts\HitCountLogic.cs" />
     <Compile Include="Assets\Scripts\InRange.cs" />
+    <Compile Include="Assets\Scripts\KnifeButtonController.cs" />
+    <Compile Include="Assets\Scripts\KnifeParticleSoundController.cs" />
+    <Compile Include="Assets\Scripts\KnifeParticleTimeLogic.cs" />
+    <Compile Include="Assets\Scripts\KnifeSpawnerController.cs" />
+    <Compile Include="Assets\Scripts\KnivesInHandController.cs" />
     <Compile Include="Assets\Scripts\Laser.cs" />
     <Compile Include="Assets\Scripts\LevelGlobals.cs" />
     <Compile Include="Assets\Scripts\LookAtTarget.cs" />
     <Compile Include="Assets\Scripts\MoveToPosition.cs" />
     <Compile Include="Assets\Scripts\NewTimeLens.cs" />
+    <Compile Include="Assets\Scripts\OnagiSpawner.cs" />
+    <Compile Include="Assets\Scripts\OnagiSphereController.cs" />
+    <Compile Include="Assets\Scripts\OnagiTypeController.cs" />
     <Compile Include="Assets\Scripts\OrbCountLogic.cs" />
     <Compile Include="Assets\Scripts\OrbLogicAttempt.cs" />
     <Compile Include="Assets\Scripts\persistantClockSoundLogic.cs" />
@@ -125,6 +139,7 @@
     <Compile Include="Assets\Scripts\ProjectilePlayerDetector.cs" />
     <Compile Include="Assets\Scripts\ProjectileTimeStopLogic.cs" />
     <Compile Include="Assets\Scripts\ShootLogic.cs" />
+    <Compile Include="Assets\Scripts\SolidConnectorLogic.cs" />
     <Compile Include="Assets\Scripts\StandActivator.cs" />
     <Compile Include="Assets\Scripts\StandMoveForward.cs" />
     <Compile Include="Assets\Scripts\StickOnPlatform.cs" />
@@ -135,9 +150,13 @@
     <Compile Include="Assets\Scripts\TimeStartsSoundLogic.cs" />
     <Compile Include="Assets\Scripts\TimeStopCountText.cs" />
     <Compile Include="Assets\Scripts\TimeStopFilterLogic.cs" />
+    <Compile Include="Assets\Scripts\TimeStopInUseImageLogic.cs" />
     <Compile Include="Assets\Scripts\TimeStopParticlesOnMe.cs" />
     <Compile Include="Assets\Scripts\TimeStopSoundLogic.cs" />
     <Compile Include="Assets\Scripts\WaitThenDestroy.cs" />
+    <Compile Include="Assets\SHIFT.cs" />
+    <Compile Include="Assets\ShooterSpawnerController.cs" />
+    <Compile Include="Assets\WASDandMOUSE.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\NewUnlitShader.shader" />
