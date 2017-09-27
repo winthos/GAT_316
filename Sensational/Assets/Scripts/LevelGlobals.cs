@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class LevelGlobals : MonoBehaviour 
 {
@@ -81,6 +82,10 @@ public class LevelGlobals : MonoBehaviour
 
             if (StopCountDuration >= StopCountCooldown)
             {
+            //reset position after taking "damage"
+                GameObject.Find("FPSController").GetComponent<Transform>().position = CurrentCheckpoint.transform.position;
+                GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = true;
+
                 GameObject.Find("FPSController/rechargedone").GetComponent<AudioSource>().Play();
                 StopCounter = 0;
                 StopCountDuration = 0;

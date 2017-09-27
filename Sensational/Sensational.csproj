@@ -155,6 +155,7 @@
     <Compile Include="Assets\Scripts\TimeStopSoundLogic.cs" />
     <Compile Include="Assets\Scripts\WaitThenDestroy.cs" />
     <Compile Include="Assets\SHIFT.cs" />
+    <Compile Include="Assets\ShooterSpawnerController.cs" />
     <Compile Include="Assets\WASDandMOUSE.cs" />
   </ItemGroup>
   <ItemGroup>

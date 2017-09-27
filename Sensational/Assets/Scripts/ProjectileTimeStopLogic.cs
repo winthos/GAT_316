@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class ProjectileTimeStopLogic : MonoBehaviour 
 {
@@ -152,7 +153,8 @@ public class ProjectileTimeStopLogic : MonoBehaviour
     {
         if (col.gameObject.tag == "StandIgnore")
         {
-            print("touched the player");
+            //print("touched the player");
+            GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
             DamageFlashOnCanvas.EnableScreen();
             GameObject StandPower = (GameObject)Instantiate(PreFabToMake, transform.position, transform.rotation);
 

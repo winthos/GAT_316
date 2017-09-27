@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class DeathZoneController : MonoBehaviour 
 {
@@ -26,8 +27,9 @@ public class DeathZoneController : MonoBehaviour
         {
             //if the player touched me, reset their position
             //LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint = gameObject;
-            other.gameObject.GetComponent<Transform>().position = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.position;
-          //  other.gameObject.GetComponent<Transform>().forward = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.forward;
+            // other.gameObject.GetComponent<Transform>().position = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.position;
+            //  other.gameObject.GetComponent<Transform>().forward = LevelGlobals.GetComponent<LevelGlobals>().CurrentCheckpoint.transform.forward;
+            GameObject.Find("FPSController").GetComponent<FirstPersonController>().enabled = false;
             DamageFlashOnCanvas.EnableScreen();
         }
     }
